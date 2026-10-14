@@ -2771,7 +2771,7 @@ function runAll(){
   soundClick(); document.getElementById('runBtn').classList.add('computing');
   const barWrap=document.getElementById('barWrap'); const bar=document.getElementById('bar');
   barWrap.classList.add('visible'); bar.style.width='0%';
-  const msg=document.getElementById('msg').value||'hello';
+  const msg=document.getElementById('msg').value;
 
   let step=0; const totalSteps=64;
   const iv=setInterval(()=>{
@@ -2821,7 +2821,7 @@ function triggerEncodeAnim() {
     let bin = b.toString(2).padStart(8,'0');
     belt.innerHTML += `
       <div class="belt-item">
-        <div class="belt-char">${String.fromCharCode(b)===' '?'_':String.fromCharCode(b)}</div>
+        <div class="belt-char">${(String.fromCharCode(b)===' '?'_':String.fromCharCode(b)).replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'})[c])}</div>
         <div class="belt-arrow">↓</div>
         <div class="belt-hex">0x${b.toString(16).padStart(2,'0')}</div>
         <div class="belt-arrow">↓</div>
